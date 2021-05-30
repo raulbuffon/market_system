@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Market_system.Models;
+using Market_system.Services;
 
 namespace Market_system
 {
@@ -32,6 +33,8 @@ namespace Market_system
 
             services.AddSingleton<IMarketDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<MarketDatabaseSettings>>().Value);
+
+            services.AddSingleton<ProductService>();
 
             services.AddControllers();
             services.AddSwaggerGen();
