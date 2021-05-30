@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using market_system.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,8 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Market_system.Models;
 
-namespace market_system
+namespace Market_system
 {
     public class Startup
     {
@@ -29,7 +29,7 @@ namespace market_system
         {
             services.Configure<MarketDatabaseSettings>(
                 Configuration.GetSection(nameof(MarketDatabaseSettings)));
-                
+
             services.AddSingleton<IMarketDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<MarketDatabaseSettings>>().Value);
 

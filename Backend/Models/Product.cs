@@ -1,7 +1,7 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace market_system.Models
+namespace Market_system.Models
 {
     public class Product
     {
