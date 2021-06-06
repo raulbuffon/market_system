@@ -38,7 +38,7 @@ namespace Market_system.Controllers
         {
             _productService.Create(product);
 
-            return CreatedAtRoute("GetBook", new { id = product.Id.ToString() }, product);
+            return CreatedAtRoute("GetProduct", new { id = product.Id.ToString() }, product);
         }
 
         [HttpPut("{id:length(24)}")]
