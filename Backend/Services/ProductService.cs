@@ -16,13 +16,13 @@ namespace Market_system.Services
             _products = database.GetCollection<Product>(settings.ProductsCollectionName);
         }
 
-        public List<Product> Get() =>
+        public List<Product> GetAll() =>
             _products.Find(product => true).ToList();
 
-        public Product Get(string id) =>
+        public Product GetById(string id) =>
             _products.Find<Product>(product => product.Id == id).FirstOrDefault();
         
-        public Product Create(Product product)
+        public Product CreateByObject(Product product)
         {
             _products.InsertOne(product);
             return product;
@@ -31,10 +31,10 @@ namespace Market_system.Services
         public void Update(string id, Product productIn) =>
             _products.ReplaceOne(product => product.Id == id, productIn);
 
-        public void Remove(Product productIn) =>
+        public void RemoveByObject(Product productIn) =>
             _products.DeleteOne(product => product.Id == productIn.Id);
 
-        public void Remove(string id) =>
+        public void RemoveById(string id) =>
             _products.DeleteOne(product => product.Id == id);
     }
 }

@@ -17,13 +17,15 @@ namespace Market_system.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Product>> Get() =>
-            _productService.Get();
+        public ActionResult<List<Product>> Get()
+        {
+            return _productService.GetAll();
+        }
 
         [HttpGet("{id:length(24)}", Name = "GetProduct")]
-        public ActionResult<Product> Get(string id)
+        public ActionResult<Product> GetById(string id)
         {
-            var product = _productService.Get(id);
+            var product = _productService.GetById(id);
 
             if (product == null)
             {
@@ -36,7 +38,7 @@ namespace Market_system.Controllers
         [HttpPost]
         public ActionResult<Product> Create(Product product)
         {
-            _productService.Create(product);
+            _productService.CreateByObject(product);
 
             return CreatedAtRoute("GetProduct", new { id = product.Id.ToString() }, product);
         }
@@ -44,7 +46,7 @@ namespace Market_system.Controllers
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, Product productIn)
         {
-            var product = _productService.Get(id);
+            var product = _productService.GetById(id);
 
             if (product == null)
             {
@@ -59,14 +61,14 @@ namespace Market_system.Controllers
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            var product = _productService.Get(id);
+            var product = _productService.GetById(id);
 
             if (product == null)
             {
                 return NotFound();
             }
 
-            _productService.Remove(product.Id);
+            _productService.RemoveById(product.Id);
 
             return NoContent();
         }
