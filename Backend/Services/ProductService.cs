@@ -22,7 +22,7 @@ namespace Market_system.Services
         public Product GetById(string id) =>
             _products.Find<Product>(product => product.Id == id).FirstOrDefault();
         
-        public Product CreateByObject(Product product)
+        public Product Create(Product product)
         {
             _products.InsertOne(product);
             return product;
@@ -31,7 +31,7 @@ namespace Market_system.Services
         public void Update(string id, Product productIn) =>
             _products.ReplaceOne(product => product.Id == id, productIn);
 
-        public void RemoveByObject(Product productIn) =>
+        public void Remove(Product productIn) =>
             _products.DeleteOne(product => product.Id == productIn.Id);
 
         public void RemoveById(string id) =>

@@ -38,7 +38,7 @@ namespace Market_system.Controllers
         [HttpPost]
         public ActionResult<Product> Create(Product product)
         {
-            _productService.CreateByObject(product);
+            _productService.Create(product);
 
             return CreatedAtRoute("GetProduct", new { id = product.Id.ToString() }, product);
         }
