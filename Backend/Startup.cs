@@ -35,6 +35,7 @@ namespace Market_system
                 sp.GetRequiredService<IOptions<MarketDatabaseSettings>>().Value);
 
             services.AddSingleton<ProductService>();
+            services.AddSingleton<OrderService>();
 
             services.AddControllers();
             services.AddSwaggerGen();
