@@ -13,8 +13,9 @@ namespace Market_system.Controllers
         private readonly ILogger<ProductsController> _logger;
         private readonly ProductService _productService;
 
-        public ProductsController(ProductService productService)
+        public ProductsController(ProductService productService, ILogger<ProductsController> logger)
         {
+            _logger = logger;
             _productService = productService;
         }
 
