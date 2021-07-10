@@ -44,7 +44,7 @@ namespace Market_system.Controllers
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Order orderIn) // problems to update an order
+        public IActionResult Update(string id, Order orderIn)
         {
             var order = _orderService.GetById(id);
 
