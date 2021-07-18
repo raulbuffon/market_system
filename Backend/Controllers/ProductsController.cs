@@ -29,7 +29,7 @@ namespace Market_system.Controllers
         [HttpGet("{id:length(24)}", Name = "GetProduct")]
         public ActionResult<Product> GetById(string id)
         {
-            _logger.LogInformation("Call controller - Get product by Id");
+            _logger.LogInformation($"Call controller - Get product by Id - ID {id}");
             var product = _productService.GetById(id);
 
             if (product == null)
@@ -68,7 +68,7 @@ namespace Market_system.Controllers
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            _logger.LogInformation("Call controller - Delete product by Id");
+            _logger.LogInformation($"Call controller - Delete product by Id - ID {id}");
             var product = _productService.GetById(id);
 
             if (product == null)
