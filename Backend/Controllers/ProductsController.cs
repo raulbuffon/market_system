@@ -52,7 +52,7 @@ namespace Market_system.Controllers
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, Product productIn)
         {
-            _logger.LogInformation("Call controller - Put to update a product");
+            _logger.LogInformation("Call controller - Put to update product");
             var product = _productService.GetById(id);
 
             if (product == null)
