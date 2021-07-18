@@ -6,6 +6,7 @@ Features
 - MongoDB connection in Backend / DONE
 - Create Product object and methods / DONE
 - Create Order object and methods / DONE
+- Add Logger on Backend Controllers
 
 - Create Order Controller that receives just product Ids and quantity
 - Add product quantity for each product in order
