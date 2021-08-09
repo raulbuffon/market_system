@@ -12,3 +12,7 @@ Features
 - Add product quantity for each product in order
 
 Using .NET Core 3.1.408
+
+Running the project:
+- command: cd backend
+- command: dotnet run
