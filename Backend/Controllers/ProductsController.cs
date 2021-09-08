@@ -41,12 +41,16 @@ namespace Market_system.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Product> Create(Product product)
+        public ActionResult<Product> Create(Product productIn)
         {
             _logger.LogInformation("Call controller - Post new product");
-            _productService.Create(product);
+            var product = _productService.Create(productIn);
 
-            return CreatedAtRoute("GetProduct", new { id = product.Id.ToString() }, product);
+            if(product == null) {
+                return Conflict();
+            }
+
+            return CreatedAtRoute("GetProduct", new { id = productIn.Id.ToString() }, productIn);
         }
 
         [HttpPut("{id:length(24)}")]

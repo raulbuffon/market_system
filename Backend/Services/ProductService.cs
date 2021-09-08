@@ -24,8 +24,12 @@ namespace Market_system.Services
         
         public Product Create(Product product)
         {
-            _products.InsertOne(product);
-            return product;
+            if(IsNameUnique(product.ProductName)){
+                _products.InsertOne(product);
+                return product;
+            }
+            
+            return null;
         }
 
         public void Update(string id, Product productIn) =>
@@ -36,5 +40,9 @@ namespace Market_system.Services
 
         public void RemoveById(string id) =>
             _products.DeleteOne(product => product.Id == id);
+
+        private bool IsNameUnique(string productName) {
+            return !(_products.Find<Product>(product => product.ProductName == productName).Any());
+        }
     }
 }

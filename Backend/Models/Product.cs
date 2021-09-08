@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -6,6 +7,7 @@ namespace Market_system.Models
     public class Product
     {
         [BsonId]
+        [JsonIgnore]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
