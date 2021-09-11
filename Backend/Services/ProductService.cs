@@ -21,6 +21,9 @@ namespace Market_system.Services
 
         public Product GetById(string id) =>
             _products.Find<Product>(product => product.Id == id).FirstOrDefault();
+
+        public Product GetByName(string productName) =>
+            _products.Find<Product>(product => product.ProductName == productName).FirstOrDefault(); 
         
         public Product Create(Product product)
         {

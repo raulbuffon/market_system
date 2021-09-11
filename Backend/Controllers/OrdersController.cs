@@ -49,6 +49,20 @@ namespace Market_system.Controllers
             return CreatedAtRoute("GetOrder", new { id = order.Id.ToString() }, order);
         }
 
+        [HttpPost]
+        [Route("CreateWithProductsName")]
+        public ActionResult<Order> Create(List<string> products)
+        {
+            _logger.LogInformation("Call controller - Post new order");
+            var result = _orderService.CreateWithProductsName(products);
+
+            if(result == null) {
+                return Accepted();
+            }
+            
+            return CreatedAtRoute("GetOrder", new { id = result.Id.ToString() }, result);
+        }
+
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, Order orderIn)
         {
